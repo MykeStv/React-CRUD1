@@ -27,6 +27,15 @@ function App() {
     ])
   }
 
+  //Eliminar usuario
+  const deleteUser = (id) => {
+    // console.log(id);
+
+    //Modifica el array users y guarda aquellos que tengan el id diferente al parametro que se esta pasando
+    setUsers( users.filter(user => user.id !== id) )
+
+  }
+
   return (
     <div className="container">
       <h1>CRUD App with Hooks</h1>
@@ -39,7 +48,7 @@ function App() {
 
         <div className="flex-large">
           <h2>View users</h2>
-          <UserTable users={users} />
+          <UserTable users={users} deleteUser={deleteUser} />
         </div>
 
       </div>
