@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import UserTable from './components/UserTable';
 import AddUserForm from './components/AddUserForm';
+import EditUserForm from './components/EditUserForm';
 
 import { v4 as uuidv4 } from 'uuid'; //Libreria para generar id automaticos conla funcion : uuidv4();
 
@@ -36,19 +37,59 @@ function App() {
 
   }
 
+  // state para el edit
+  const [editing, setEditing] = useState(false);
+
+  //state para el usuario actual seleccionado para editar
+  const initialForm = {
+    id: null,
+    name: '',
+    username: ''
+  }
+  const [currentUser, setCurrentUser] = useState(initialForm);
+
+  //Metodo para editar el usuario actual
+  const editRow = (user) => {
+    setEditing(true);
+
+    setCurrentUser({
+      id: user.id,
+      name: user.name,
+      username: user.username
+    })
+  }
+
+
   return (
     <div className="container">
       <h1>CRUD App with Hooks</h1>
       <div className="flex-row">
-
+        
         <div className="flex-large">
-          <h2>Add user</h2>
-          <AddUserForm addUser={addUser} />
+          
+          {
+            editing ? (
+              <div>
+                <h2>Edit user</h2>
+                <EditUserForm currentUser={currentUser} />
+              </div>      
+            ) : (
+              <div>
+                <h2>Add user</h2>
+                <AddUserForm addUser={addUser} />
+              </div>
+            )
+          }
+          
         </div>
 
         <div className="flex-large">
           <h2>View users</h2>
-          <UserTable users={users} deleteUser={deleteUser} />
+          <UserTable 
+            users={users} 
+            deleteUser={deleteUser}
+            editRow={editRow}
+          />
         </div>
 
       </div>
