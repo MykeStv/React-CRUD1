@@ -2,6 +2,14 @@
 
 ### **_Maycol Steven Rincon Bayona_**
 
+## Preguntas
+
+- ¿Los operadores logicos && , || se pueden usar como funciones de condicional?
+- ¿Qué significa el elemento **?.** en Javascript?
+- ¿Qué son los state en javascript?
+- ¿Qué son los props en javascript?
+- ¿Qué son los hooks y en que se diferencian de las clases en javascript?
+
 <hr />
 
 # Getting Started with Create React App

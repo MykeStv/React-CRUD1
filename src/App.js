@@ -87,6 +87,7 @@ function App() {
                 <EditUserForm 
                   currentUser={currentUser} 
                   updateUser={updateUser}
+                  setEditing={setEditing}
                 />
               </div>      
             ) : (

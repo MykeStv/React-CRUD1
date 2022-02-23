@@ -63,6 +63,14 @@ const EditUserForm = (props) => {
             </span>
 
             <button type="submit">Edit user</button>
+            <button
+                type="button"
+                className="button muted-button"
+                onClick={() => props.setEditing(false)}
+            >
+                Cancel
+            </button>
+
         </form >
     );
 };
