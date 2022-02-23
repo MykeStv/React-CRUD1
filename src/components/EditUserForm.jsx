@@ -20,6 +20,9 @@ const EditUserForm = (props) => {
     const onSubmit = (data, e) => {
         console.log(data);
 
+        //permite actualizar la info en la tabla cuando submit
+        props.updateUser(props.currentUser.id, data);
+        // props.updateUser(data.id, data);
 
         //Limpia el input despues del submit
         e.target.reset();

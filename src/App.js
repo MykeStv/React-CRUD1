@@ -50,6 +50,7 @@ function App() {
 
   //Metodo para editar el usuario actual
   const editRow = (user) => {
+    //Lleva al formulario de editar usuario
     setEditing(true);
 
     setCurrentUser({
@@ -57,6 +58,18 @@ function App() {
       name: user.name,
       username: user.username
     })
+  }
+
+  //Metodo para actualizar el usuario en la tabla
+  const updateUser = (id, updatedUser) => {
+    // Vuelve al formulario de ingresar usuario
+    setEditing(false);
+
+    // Se mapea el array con las condiciones
+    setUsers(users.map( user => (
+      // si el id es igual a user.id entonces se cambia por el usuario actualizado
+      user.id === id ? updatedUser : user
+    )));
   }
 
 
@@ -71,7 +84,10 @@ function App() {
             editing ? (
               <div>
                 <h2>Edit user</h2>
-                <EditUserForm currentUser={currentUser} />
+                <EditUserForm 
+                  currentUser={currentUser} 
+                  updateUser={updateUser}
+                />
               </div>      
             ) : (
               <div>
